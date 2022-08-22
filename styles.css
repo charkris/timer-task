@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  h1 {
+    color: white;
+    padding: 5px;
+  }
+  
+  .timer-section {
+    background-color: #72aeaf;
+    margin: auto;
+    margin-top: 20px;
+    width: 500px;
+    border-radius: 10px;
+  }
+  
+  .timer-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .num-inp-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .seconds,
+  .minutes,
+  .hours,
+  .days,
+  .divider {
+    font-size: 60px;
+    margin: 5px;
+    color: white;
+  }
+  
+  .inp-hour,
+  .inp-min,
+  .inp-sec,
+  .inp-day {
+    width: 80px;
+    outline: none;
+    margin: 20px 10px 10px 10px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .all-btns {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btn {
+    margin: 20px;
+    padding: 5px 13px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  

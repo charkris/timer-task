@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Timer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <section class="timer-section">
+            <!-- <h1>Timer</h1> -->
+            <div class="num-inp-wrapper">
+                <input type="number" class="inp-day" id="inp-days" placeholder="Days">
+                <input type="number" class="inp-hour" id="inp-hours" placeholder="Hours">
+                <input type="number" class="inp-min" id="inp-minutes" placeholder="Minutes" >
+                <input type="number" class="inp-sec" id="inp-seconds" placeholder="Seconds" >
+            </div>            
+            <div class="timer-wrapper" id="display-time">
+                <span class="days" id="daysId">00</span> <span class="divider">:</span>
+                <span class="hours" id="hoursId">00</span> <span class="divider">:</span>
+                <span class="minutes" id="minutesId">00</span> <span class="divider">:</span>
+                <span class="seconds" id="secondsId">00</span> 
+            </div>
+            <div class="all-btns">
+                <button class="btn" id="start">Start</button>
+                <button class="btn hidden" id="pause" >Pause</button>
+                <button class="btn hidden" id="resume">Resume</button>
+                <button class="btn hidden" id="reset">Reset</button>
+            </div>
+            
+        </section>
+
+        <script type="module" src="./js/main.js"></script> 
+    </body>
+</html>
