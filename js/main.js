@@ -27,8 +27,6 @@ btnStart.addEventListener("click", () => {
   inpMnts.value = null;
   inpScnds.value = null;
 
-  console.log("aaaaaa");
-
   let timer = new Timer(days, hrs, mnts, scnds);
   timeInSeconds = timer.getTimeInSeconds();
 
