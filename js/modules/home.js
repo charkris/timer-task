@@ -21,18 +21,11 @@ export class Timer extends Base {
     let minute = Math.trunc(time > 3600 ? (time % 3600) / 60 : time / 60);
     let second = time % 60;
 
-    if (day < 10) {
-      day = "0" + day;
-    }
-    if (hour < 10) {
-      hour = "0" + hour;
-    }
-    if (minute < 10) {
-      minute = "0" + minute;
-    }
-    if (second < 10) {
-      second = "0" + second;
-    }
+    day = this.checkDigit(day);
+    hour = this.checkDigit(hour);
+    minute = this.checkDigit(minute);
+    second = this.checkDigit(second);
+
     return `                
         <span class="days" id="daysId">${day}</span> <span class="divider">:</span>
         <span class="hours" id="hoursId">${hour}</span> <span class="divider">:</span>
@@ -56,6 +49,13 @@ export class Timer extends Base {
     document.getElementById("inp-hours").removeAttribute("disabled");
     document.getElementById("inp-minutes").removeAttribute("disabled");
     document.getElementById("inp-seconds").removeAttribute("disabled");
+  }
+
+  resetInpFields() {
+    document.getElementById("inp-days").value = null;
+    document.getElementById("inp-hours").value = null;
+    document.getElementById("inp-minutes").value = null;
+    document.getElementById("inp-seconds").value = null;
   }
 
   showRestartBtns() {

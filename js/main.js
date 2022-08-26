@@ -12,28 +12,24 @@ let inpScnds = document.getElementById("inp-seconds");
 let days, hrs, mnts, scnds, timeInSeconds, myTimerId;
 
 btnStart.addEventListener("click", () => {
-  if (myTimerId) {
-    clearInterval(myTimerId);
-  }
   // store input values
   days = inpDays.value;
   hrs = inpHrs.value;
   mnts = inpMnts.value;
   scnds = inpScnds.value;
 
-  // reset input fields
-  inpDays.value = null;
-  inpHrs.value = null;
-  inpMnts.value = null;
-  inpScnds.value = null;
-
   let timer = new Timer(days, hrs, mnts, scnds);
   timeInSeconds = timer.getTimeInSeconds();
+
+  //reset input fields
+  timer.resetInpFields();
 
   // Start Timer
   myTimerId = setInterval(() => {
     if (timeInSeconds > 0) {
+      // disable time input fields
       timer.disableTimeSet();
+      // buttons appearance after start
       timer.showBtnAfterStart();
       timeInSeconds--;
       timer.render(timeInSeconds);
@@ -56,9 +52,9 @@ btnStart.addEventListener("click", () => {
       clearInterval(myTimerId);
     }
     myTimerId = setInterval(() => {
-      if (timeInSeconds >= 0) {
-        timer.render(timeInSeconds);
+      if (timeInSeconds > 0) {
         timeInSeconds--;
+        timer.render(timeInSeconds);
       } else {
         clearInterval(myTimerId);
       }
