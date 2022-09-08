@@ -37,49 +37,43 @@ export class Timer extends Base {
     this.setContent("display-time", this._getTimefromSeconds(tempTime));
   }
 
-  disableTimeSet() {
-    document.getElementById("inp-days").setAttribute("disabled", true);
-    document.getElementById("inp-hours").setAttribute("disabled", true);
-    document.getElementById("inp-minutes").setAttribute("disabled", true);
-    document.getElementById("inp-seconds").setAttribute("disabled", true);
+  changeFields(days, hours, minutes, seconds, isDisable) {
+    if (isDisable === true) {
+      days.setAttribute("disabled", true);
+      hours.setAttribute("disabled", true);
+      minutes.setAttribute("disabled", true);
+      seconds.setAttribute("disabled", true);
+    } else if (isDisable === false) {
+      days.removeAttribute("disabled");
+      hours.removeAttribute("disabled");
+      minutes.removeAttribute("disabled");
+      seconds.removeAttribute("disabled");
+    } else if (isDisable === null) {
+      days.value = null;
+      hours.value = null;
+      minutes.value = null;
+      seconds.value = null;
+    }
   }
 
-  enableTimeSet() {
-    document.getElementById("inp-days").removeAttribute("disabled");
-    document.getElementById("inp-hours").removeAttribute("disabled");
-    document.getElementById("inp-minutes").removeAttribute("disabled");
-    document.getElementById("inp-seconds").removeAttribute("disabled");
-  }
-
-  resetInpFields() {
-    document.getElementById("inp-days").value = null;
-    document.getElementById("inp-hours").value = null;
-    document.getElementById("inp-minutes").value = null;
-    document.getElementById("inp-seconds").value = null;
-  }
-
-  showRestartBtns() {
-    document.getElementById("start").classList.remove("hidden");
-    document.getElementById("pause").classList.add("hidden");
-    document.getElementById("resume").classList.add("hidden");
-    document.getElementById("reset").classList.add("hidden");
-  }
-
-  showPauseBtn() {
-    document.getElementById("pause").classList.add("hidden");
-    document.getElementById("resume").classList.remove("hidden");
-    document.getElementById("reset").classList.remove("hidden");
-  }
-
-  showResumeBtn() {
-    document.getElementById("pause").classList.remove("hidden");
-    document.getElementById("resume").classList.add("hidden");
-    document.getElementById("reset").classList.remove("hidden");
-  }
-
-  showBtnAfterStart() {
-    document.getElementById("start").classList.add("hidden");
-    document.getElementById("pause").classList.remove("hidden");
-    document.getElementById("reset").classList.remove("hidden");
+  displayButtons(start, pause, resume, reset, key) {
+    if (key === "start") {
+      start.classList.add("hidden");
+      pause.classList.remove("hidden");
+      reset.classList.remove("hidden");
+    } else if (key === "pause") {
+      pause.classList.add("hidden");
+      resume.classList.remove("hidden");
+      reset.classList.remove("hidden");
+    } else if (key === "resume") {
+      pause.classList.remove("hidden");
+      resume.classList.add("hidden");
+      reset.classList.remove("hidden");
+    } else if (key === "reset") {
+      start.classList.remove("hidden");
+      pause.classList.add("hidden");
+      resume.classList.add("hidden");
+      reset.classList.add("hidden");
+    }
   }
 }

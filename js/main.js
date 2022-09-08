@@ -22,28 +22,28 @@ btnStart.addEventListener("click", () => {
   timeInSeconds = timer.getTimeInSeconds();
 
   //reset input fields
-  timer.resetInpFields();
+  timer.changeFields(inpDays, inpHrs, inpMnts, inpScnds, null);
 
   // Start Timer
   myTimerId = setInterval(() => {
     if (timeInSeconds > 0) {
       // disable time input fields
-      timer.disableTimeSet();
+      timer.changeFields(inpDays, inpHrs, inpMnts, inpScnds, true);
       // buttons appearance after start
-      timer.showBtnAfterStart();
+      timer.displayButtons(btnStart, btnPause, btnResume, btnReset, "start");
       timeInSeconds--;
       timer.render(timeInSeconds);
     } else {
       clearInterval(myTimerId);
-      timer.enableTimeSet();
-      timer.showRestartBtns();
+      timer.changeFields(inpDays, inpHrs, inpMnts, inpScnds, false);
+      timer.displayButtons(btnStart, btnPause, btnResume, btnReset, "reset");
     }
   }, 1000);
 
   // Pause Timer
   btnPause.addEventListener("click", () => {
     clearInterval(myTimerId);
-    timer.showPauseBtn();
+    timer.displayButtons(btnStart, btnPause, btnResume, btnReset, "pause");
   });
 
   // Resume Timer
@@ -60,14 +60,14 @@ btnStart.addEventListener("click", () => {
       }
     }, 1000);
 
-    timer.showResumeBtn();
+    timer.displayButtons(btnStart, btnPause, btnResume, btnReset, "resume");
   });
 
   // Reset Timer
   btnReset.addEventListener("click", () => {
     clearInterval(myTimerId);
     timer.render(0);
-    timer.enableTimeSet();
-    timer.showRestartBtns();
+    timer.changeFields(inpDays, inpHrs, inpMnts, inpScnds, false);
+    timer.displayButtons(btnStart, btnPause, btnResume, btnReset, "reset");
   });
 });
